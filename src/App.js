@@ -1,23 +1,23 @@
 import logo from './logo.svg';
+import react, {useState, useEffect} from 'react';
+import willresume from './data';
+import Resume from './Components/Resume/Resume';
 import './App.css';
 
 function App() {
+  const [willsResume, setWillsResume] = useState({});
+
+  function populateResume() {
+    console.log("Hi there")
+  }
+
+  useEffect(() => {
+    populateResume();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Resume resume={willsResume}/>
     </div>
   );
 }

@@ -1,0 +1,23 @@
+#resume-main {
+  margin: 3em;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.resume-section {
+  width: 50%;
+}
+
+.resume-section h3 {
+  font-size: 3em;
+}
+
+.skill-tile {
+  display: inline;
+  border: 2px solid black;
+  padding: .2em .5em;
+  border-radius: 5em;
+  font-weight: bold;
+  margin-left: .5em;
+}
