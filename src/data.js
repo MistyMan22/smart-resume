@@ -1,8 +1,9 @@
-
+import { nanoid } from "nanoid";
 class Skill {
   constructor(prerequisites, name) {
     this.prerequisites = prerequisites;  // required prerequisites
     this.name = name;
+    this.id = nanoid();
   }
 }
 
@@ -86,6 +87,7 @@ class Project {
     this.name = name;
     this.description = description;
     this.skills = skills;
+    this.id = nanoid();
   }
 }
 
@@ -112,6 +114,7 @@ class Employer {
   constructor(parent, name) {
     this.name = name;
     this.parent = parent;
+    this.id = nanoid();
   }
 }
 
@@ -125,6 +128,7 @@ let asu = new Employer(rootEmployer, "Appalachian State University");
 class HigherEducation {
   constructor(name) {
     this.name = name;
+    this.id = nanoid();
   }
 }
 
@@ -133,12 +137,14 @@ class Degree {
     this.name = name;
     this.major = major;
     this.grantingInstitution = grantingInstitution;
+    this.id = nanoid();
   }
 }
 
 class FieldOfStudy {
   constructor(name) {
     this.name = name;
+    this.id = nanoid();
   }
 }
 
@@ -153,6 +159,7 @@ class Certification {
   constructor(name, grantingInstitution) {
     this.name = name;
     this.grantingInstitution = grantingInstitution;
+    this.id = nanoid();
   }
 }
 
@@ -163,6 +170,7 @@ class Person {
     this.name = name;
     this.phone = phone;
     this.email = email;
+    this.id = nanoid();
   }
 }
 
@@ -175,6 +183,7 @@ class EducationSource {
     this.name = name;
     this.type = type;
     this.link = link;
+    this.id = nanoid();
   }
 }
 
@@ -184,6 +193,7 @@ class PersonToSkill {
     this.skill = skill;
     this.educationSource = educationSource;
     this.experienceLevel = experienceLevel;
+    this.id = nanoid();
   }
 }
 
@@ -192,6 +202,7 @@ class PersonToProject {
     this.person = person;
     this.project = project;
     this.timeWorked = timeWorked; // days
+    this.id = nanoid();
   }
 }
 
@@ -201,6 +212,7 @@ class PersonToDegree {
     this.degree = degree;
     this.dateObtained = dateObtained;
     this.gpa = gpa;
+    this.id = nanoid();
   }
 }
 
@@ -209,6 +221,7 @@ class PersonToCertification {
     this.person = person;
     this.certification = certification;
     this.status = status;
+    this.id = nanoid();
   }
 }
 
@@ -219,12 +232,14 @@ class PersonToEmployer {
     this.jobTitle = jobTitle;
     this.startDate = startDate;
     this.endDate = endDate;
+    this.id = nanoid();
   }
 }
 
 class SourceType {
   constructor(type) {
     this.type = type;
+    this.id = nanoid();
   }
 }
 
@@ -232,6 +247,7 @@ class ProjectToSkill {
   constructor(project, skill) {
     this.project = project; 
     this.skill = skill;
+    this.id = nanoid();
   }
 }
 
@@ -259,6 +275,7 @@ class ProjectExperience {
   constructor(person, projectToSkill) {
     this.person = person;
     this.projectToSkill = projectToSkill;
+    this.id = nanoid();
   }
 }
 
