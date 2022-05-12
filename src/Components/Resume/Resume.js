@@ -1,4 +1,5 @@
 import react, {useState} from 'react';
+import { Link } from 'react-router-dom';
 import willresume from '../../data';
 import SkillOfPerson from '../SkillOfPerson/SkillOfPerson';
 import "./Resume.css";
@@ -19,7 +20,7 @@ export default function Resume(props) {
       <div className="resume-section" id="image-placeholder"/>
       <div className="resume-section" id="skills-section">
         <h3>Skills</h3>
-        {willresume.skills.map(item => <div className="skill-tile">{item.skill.name}</div>)}
+        {willresume.skills.map(item => <Link to={item.id} className="quiet-link"><div className="skill-tile">{item.skill.name}</div></Link>)}
       </div>
       <div className="resume-section" id="projects-section">
         <h3>Projects</h3>
@@ -50,7 +51,6 @@ export default function Resume(props) {
           </div>
         ))}
       </div>
-      <SkillOfPerson skillToPerson={willresume.skills[0]}/>
     </div>
   )
 }

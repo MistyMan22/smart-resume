@@ -2,22 +2,19 @@ import logo from './logo.svg';
 import react, {useState, useEffect} from 'react';
 import willresume from './data';
 import Resume from './Components/Resume/Resume';
+import SkillOfPerson from './Components/SkillOfPerson/SkillOfPerson';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
-  const [willsResume, setWillsResume] = useState({});
-
-  function populateResume() {
-    console.log("Hi there")
-  }
-
-  useEffect(() => {
-    populateResume();
-  }, []);
-
   return (
     <div className="App">
-      <Resume resume={willsResume}/>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Resume/>}/>
+          <Route path='/:persontoskillid' element={<SkillOfPerson/>}/>
+        </Routes>
+      </Router>
     </div>
   );
 }

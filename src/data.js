@@ -345,4 +345,15 @@ let willresume = {
   certifications: willCerts
 }
 
+let personToSkills = willSkills;
+
+export function getPersonToSkill(id) {
+  console.log("\n\ngetPersonToSkill");
+  console.log("id: " + id);
+  for (let x of personToSkills)
+    console.log("xid: " + x.id);
+
+  return personToSkills.find(item => item.id === id);
+}
+
 export default willresume;
