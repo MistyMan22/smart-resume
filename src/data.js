@@ -260,7 +260,7 @@ let tcpl = new EducationSource("The C Programming Language", book, "https://en.w
 let computationalPhysics = new EducationSource("PHY 5020 - Computational Methods in Physics and Engineering", course, "");
 let microcontrollers = new EducationSource("PHY 5735 - Microcontrollers", course, "");
 let codeAcademyC = new EducationSource("Code Academy C Course", course, "https://www.codecademy.com/learn/learn-c");
-let generalInternetResource = new EducationSource("General Internet Resource", onlineArticle, "");
+let generalInternetResource = new EducationSource("General Internet Resources", onlineArticle, "");
 let atourofcpp = new EducationSource("A Tour of C++", book, "https://www.stroustrup.com/tour2.html");
 let davidcmentorship = new EducationSource("Mentorship from Senior Developer", mentorship, "");
 let apidesignincpp = new EducationSource("Api Design in C++", book, "");
@@ -286,7 +286,7 @@ let pythonon2ddrone = new ProjectToSkill(twoddrone, python);
 let willc = new PersonToSkill(willwhite, c, [tcpl, computationalPhysics, microcontrollers, codeAcademyC, generalInternetResource], "Intermediate");
 let usecsharponjws = new ProjectExperience(willwhite, csharponjws);
 let willcpp = new PersonToSkill(willwhite, cpp, [atourofcpp, davidcmentorship, generalInternetResource], "Advanced");
-let willcsharp = new PersonToSkill(willwhite, csharp, [usecsharponjws, davidcmentorship, generalInternetResource], "Intermediate");
+let willcsharp = new PersonToSkill(willwhite, csharp, [davidcmentorship, generalInternetResource], "Intermediate");
 let willjava = new PersonToSkill(willwhite, java, [cs1440, cs2440, generalInternetResource], "Intermediate");
 let usejavaonsosoa = new ProjectExperience(willwhite, javaonsosoa);
 let willpython = new PersonToSkill(willwhite, python, [codeAcademyPython, opensourcerobotics]);
@@ -348,12 +348,24 @@ let willresume = {
 let personToSkills = willSkills;
 
 export function getPersonToSkill(id) {
-  console.log("\n\ngetPersonToSkill");
-  console.log("id: " + id);
-  for (let x of personToSkills)
-    console.log("xid: " + x.id);
-
   return personToSkills.find(item => item.id === id);
+}
+
+let projectContributions = [
+  willusedpythonon2ddrone,
+  usecsharponjws,
+  usejavaonsosoa
+]
+
+export function getProjectSkillContributions(skillName, personName) {
+  let ret = [];
+
+  for (let c of projectContributions) {
+    if (c.projectToSkill.skill.name === skillName && c.person.name === personName)
+      ret.push(c);
+  }
+
+  return ret;
 }
 
 export default willresume;

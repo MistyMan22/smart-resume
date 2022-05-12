@@ -1,10 +1,11 @@
 import react, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { getPersonToSkill } from '../../data';
+import { getPersonToSkill, getProjectSkillContributions } from '../../data';
 import './SkillOfPerson.css';
 
 export default function SkillOfPerson(props) {
   const [obj, setObj] = useState({});
+  const [contributions, setContributions] = useState([])
   let params = useParams();
 
   useEffect(() => {
@@ -13,8 +14,13 @@ export default function SkillOfPerson(props) {
 
   function populateObj() {
     let pts = getPersonToSkill(params.persontoskillid);
-    console.log("pts: " + JSON.stringify(pts));
+    
+    if (pts === null  || typeof(pts) === "undefined")
+      return;
+
     setObj(pts);
+    let contribs = getProjectSkillContributions(pts.skill.name, pts.person.name);
+    setContributions(contribs);
   }
 
   function isEmpty(obj) {
@@ -23,11 +29,13 @@ export default function SkillOfPerson(props) {
 
   return (
     (obj !== null && typeof(obj) !== "undefined" && !isEmpty(obj)) && (
-      <div>
-        <h3>{obj.person.name} and {obj.skill.name}</h3>
-        <p>{obj.person.name} is {obj.experienceLevel}</p>
-        <h5>Where {obj.person.name} learned {obj.skill.name}:</h5>
+      <div className="skill-of-person-view">
+        <h3>{obj.person.name}'s history with {obj.skill.name}</h3>
+        <p>{obj.person.name} is <em>{obj.experienceLevel}</em> in {obj.skill.name}</p>
+        <h5>Education Sources:</h5>
         {obj.educationSource.map(source => <p>{source.name}</p>)}
+        <h5>Project Experience:</h5>
+        {contributions.map(c => <div>{c.projectToSkill.project.name}</div>)}
       </div>
   ))
 }

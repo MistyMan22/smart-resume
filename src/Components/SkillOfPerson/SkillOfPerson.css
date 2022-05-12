@@ -1,0 +1,15 @@
+.skill-of-person-view {
+  margin: 3em;
+}
+
+.skill-of-person-view h3 {
+  font-size: 3em;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.skill-of-person-view h5 {
+  font-size: 1.7em;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
