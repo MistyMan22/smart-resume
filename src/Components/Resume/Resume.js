@@ -1,5 +1,6 @@
 import react, {useState} from 'react';
 import willresume from '../../data';
+import SkillOfPerson from '../SkillOfPerson/SkillOfPerson';
 import "./Resume.css";
 
 export default function Resume(props) {
@@ -49,6 +50,7 @@ export default function Resume(props) {
           </div>
         ))}
       </div>
+      <SkillOfPerson skillToPerson={willresume.skills[0]}/>
     </div>
   )
 }
